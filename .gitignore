@@ -1,0 +1,16 @@
+# Private data: the raw export contains real player and Pokémon UUIDs. Never commit it.
+raw/
+*.csv
+
+# Third-party reference data, downloaded by model/fetch_lookup.py
+lookup/pokedex.json
+
+# Python / tooling
+.venv/
+__pycache__/
+*.pyc
+model/catboost_info/
+catboost_info/
+
+# Run logs (metrics and tuning results are kept as JSON)
+model/artifacts/*.log

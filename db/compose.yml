@@ -1,0 +1,21 @@
+# Local PostgreSQL holding the pseudonymised GTS export. Load it with load.sql.
+name: gts
+
+services:
+  postgres:
+    image: postgres:18
+    container_name: gts-postgres
+    environment:
+      POSTGRES_DB: gts
+      POSTGRES_USER: gts
+      POSTGRES_HOST_AUTH_METHOD: trust   # bound to localhost only
+    ports:
+      - "127.0.0.1:5434:5432"            # 5432 = BigData, 5433 = MOT
+    volumes:
+      - pgdata:/var/lib/postgresql
+      - ../raw:/data/raw:ro
+      - .:/db:ro
+    mem_limit: 512m
+
+volumes:
+  pgdata:
